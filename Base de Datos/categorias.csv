@@ -1,0 +1,58 @@
+,id_categorias,Categoria
+0,1,TERCERA                                                                  
+1,2,SEGUNDA                        
+2,3,CUARTA                                                                                     
+3,4,SEGUNDA / 3 TENEDORES                                         
+4,5,1 Estrellas                                                                                
+5,6,OPERADOR TURÍSTICO                                                                         
+6,7,(1) Un tenedor                                                          
+7,8,AGENCIA DE VIAJES DUAL                                                                      
+8,9,2 Estrellas                                                                                 
+9,10,3 Estrellas                                                                                 
+10,11,PRIMERA                                                                                     
+11,12,CUARTA / 1 TENEDOR                                                                          
+12,13,Categoría única                                                                             
+13,14,AGENCIA DE VIAJES INTERNACIONAL                                                             
+14,15,TERCERA / 2 TENEDORES                                                                       
+15,16,(1) Una copa                                                                                
+16,17,2 Estrellas                                                                                 
+17,18,PRIMERA / 1 TAZA                                                                            
+18,19,PRIMERA / 4 TENEDORES                                                                       
+19,20,SERVICIO TRANSP.TERRES.TURIS.                                                               
+20,21,(2) Dos tenedores                                                                           
+21,22,1 ESTRELLAS                                                                                 
+22,23,(1) Una taza                                                                                
+23,24,PRIMERA / 3 COPAS                                                                           
+24,25,4 Estrellas                                                                                 
+25,26,AGENCIA DE VIAJES MAYORISTA                                                                 
+26,27,(1) Una tazas                                                                               
+27,28,3 Estrellas                                                                                 
+28,29,SEGUNDA / 2 COPAS                                                                            
+29,30,YATES_PASAJ                                                                                  
+30,31,LANC_PASAJE                                                                                 
+31,32,(3) Tres tenedores                                                                           
+32,33,RENT A CAR                                                                                   
+33,34,(2) Dos tazas                                                                                
+34,35,(2) Dos copas                                                                                
+35,36,(4) Cuatro tenedores                                                                         
+36,37,TERCERA / 1 COPA                                                                             
+37,38,5 Estrellas                                                                                  
+38,39,INTER_OPER                                                                                   
+39,40,4 ESTRELLAS                                                                                  
+40,41,LUJO / 5 TENEDORES                                                                           
+41,42,LUJO                                                                                         
+42,43,LAN_TOUR_DIARIO                                                                              
+43,44,(3) Tres copas                                                                               
+44,45,LUJO / 2 TAZAS                                                                               
+45,46,5 ESTRELLAS                                                                                 
+46,47,SERVICIO NACIONAL AEREO                                                                       
+47,48,(5) Cinco tenedores                                                                           
+48,49,MOTONAVES                                                                                     
+49,50,FLUVIAL                                                                                       
+50,51,MOTO_Velero                                                                                   
+51,52,INTERNACIONAL NO OPERANTE EN EL PAÍS QUE TIENE OFICINAS DE VENTA                              
+52,53,INTERNACIONAL NO OPERANTE EN EL PAÍS QUE TIENE OFICINAS DE REPRESENTACIÓN O INFORMACIÓN       
+53,54,tercera                                                                                       
+54,55,tercera                                                                                       
+55,56,SERVICIO AVIONETAS HELICOPTEROS                                                               
+56,57,FUNICULARES O TELEFÉRICOS POR CABINAS 
