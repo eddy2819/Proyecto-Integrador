@@ -9,8 +9,12 @@ los estudiantes encargados de desarrolllar este proyecto son:
 En la parte de base de datos se realizo el tratamiento del conjunto de datos , asi mimsmo com el de algunos datos complemnetarios extaridos de fuentes externas , y de todos estos datos se realizaron
 
 - Diseño Conceptual
+![Diagrama Conceptual L](https://user-images.githubusercontent.com/73207797/182074636-ba31e410-2e0f-401e-9159-c27207fb6ab2.png)
+
 
 - Diseño Logico
+
+![Diagrama Relacinal L](https://user-images.githubusercontent.com/73207797/182074683-ecefe8f9-61d5-404d-9e28-8f73cf213cd9.png)
 
 - Preparacion de los datos para Cargarlos
 
