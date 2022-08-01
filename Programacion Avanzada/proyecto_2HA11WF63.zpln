@@ -1,0 +1,687 @@
+﻿{
+  "paragraphs": [
+    {
+      "title": "Proyecto Integrador",
+      "text": "analizar los datos de un exel y realizar consultas \nIntegrantes:\n* Genesis Gonzalez\n* Eddy Guarnizo\n* Denis Cuenca",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-27T04:47:49+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Proyecto Integrador</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1658897269634_1509495700",
+      "id": "paragraph_1658327497359_1963267758",
+      "dateCreated": "2022-07-27T04:47:49+0000",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:736"
+    },
+    {
+      "text": "%Mysql\nuse Proyecto_integrador;",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T00:14:01+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1659226272565_1977555189",
+      "id": "paragraph_1659226272565_1977555189",
+      "dateCreated": "2022-07-31T00:11:12+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:4342",
+      "dateFinished": "2022-07-31T00:14:01+0000",
+      "dateStarted": "2022-07-31T00:14:01+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "\n%Mysql\n\n-- Cantidad de establecimientos totales y regulados por provincia \nSELECT p.provincia, count(e.id_establecimiento) as \"Total establecimientos\", \n\n\t\t\t\t\t\t(SELECT pro.establecimientos_regulados \n                        FROM provincias pro\n                        WHERE pro.id_provincias = p.id_provincias) as \"Establecimientos regulados\"\nFROM establecimientos e, provincias p, ubicaciones u, cantones c, parroquias pa\nWHERE e.direccion = u.direccion \n\tAND u.id_parroquia  = pa.id_parroquia \n    AND pa.id_canton = c.id_canton\n    AND c.id_provincia =  p.id_provincias\n    \ngroup by 1, 3\nORDER By 3 asc\nLIMIT 5\n;",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T02:29:30+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia": "string",
+                      "Total establecimientos": "string",
+                      "Establecimientos regulados": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "provincia",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Total establecimientos",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Establecimientos regulados",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1658897269646_1696069673",
+      "id": "paragraph_1658335501129_1307505507",
+      "dateCreated": "2022-07-27T04:47:49+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:764",
+      "dateFinished": "2022-07-31T02:28:59+0000",
+      "dateStarted": "2022-07-31T02:28:58+0000",
+      "title": "Consultas a utilizar",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia\tTotal establecimientos\tEstablecimientos regulados\nGALÁPAGOS\t583\t103\nBOLÍVAR\t147\t107\nORELLANA\t158\t118\nAZUAY\t2143\t1300\nCARCHI\t56\t132\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%Mysql\n\nuse Proyecto_integrador;\nSELECT a.actividad,count(*)\nFROM cantones c, establecimientos e, parroquias p, ubicaciones u, actividades a,  establecimientos_actividad ea\nWHERE e.direccion = u.direccion AND u.id_parroquia = p.id_parroquia AND\np.id_canton = c.id_canton AND a.id_actividad = ea.id_actividad AND ea.id_establecimiento = e.id_establecimiento \n\nAND c.canton = \"Loja\"\n\nGROUP BY 1\nORDER BY 1 asc;",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T00:42:17+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "actividad": "string",
+                      "count(*)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "actividad": "string",
+                      "count(*)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "actividad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(*)",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1659226444589_1196491850",
+      "id": "paragraph_1659226444589_1196491850",
+      "dateCreated": "2022-07-31T00:14:04+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:4493",
+      "dateFinished": "2022-07-31T00:21:41+0000",
+      "dateStarted": "2022-07-31T00:21:41+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "actividad\tcount(*)\nALIMENTOS  Y  BEBIDAS\t179\nALOJAMIENTO\t20\nINTERMEDIACIÓN\t1\nOPERACIÓN  E  INTERMEDIACIÓN\t9\nTRANSPORTE  TURÍSTICO\t1\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%Mysql\nSELECT count(e.id_establecimiento), t.clasificacion\nFROM tipos_comercio t, establecimientos e, actividades a,  establecimientos_actividad ea, cantones c, parroquias p, ubicaciones u\n\nWHERE t.id_tipo_comercio = e.id_tipo_comercio \n\n     AND a.id_actividad = ea.id_actividad\n     \n     AND ea.id_establecimiento = e.id_establecimiento\n     \n     AND e.direccion = u.direccion AND u.id_parroquia = p.id_parroquia AND p.id_canton = c.id_canton \n     \n     AND c.canton = \"Loja\" AND a.actividad = \"ALIMENTOS  Y  BEBIDAS\"\n     \nGROUP BY 2     \nORDER BY 1 desc\nLIMIT 5;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T00:41:57+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id_establecimiento)": "string",
+                      "clasificacion": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "clasificacion",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "id_establecimiento)",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1659227134222_73646940",
+      "id": "paragraph_1659227134222_73646940",
+      "dateCreated": "2022-07-31T00:25:34+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:11059",
+      "dateFinished": "2022-07-31T00:42:00+0000",
+      "dateStarted": "2022-07-31T00:41:57+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id_establecimiento)\tclasificacion\n108\tRESTAURANTE\n31\tBAR\n21\tFUENTE  DE  SODA\n8\tCAFETERÍA\n6\tDISCOTECA\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "\n\n%Mysql\n\nSELECT DISTINCT t.clasificacion, (SELECT count(e_.direccion_web )\n\n    FROM tipos_comercio t_, establecimientos e_ \n                                \n    WHERE  t_.id_tipo_comercio  = e_.id_tipo_comercio \n                                \n    AND e_.direccion_web != \"\" \n                                \n    AND t_.clasificacion = t.clasificacion)  AS \"dirección web\",\n    \n    \n    (SELECT count(e_.direccion )\n\n    FROM tipos_comercio t_, establecimientos e_ \n                                \n    WHERE  t_.id_tipo_comercio  = e_.id_tipo_comercio \n                                \n    AND e_.direccion != \"\"\n                                \n    AND t_.clasificacion = t.clasificacion)  AS \"dirección\",\n    \n    (\nSELECT count(c_.correo_electronico)\n\nFROM tipos_comercio t_, establecimientos e_ , contactos c_\n                                \nWHERE  t_.id_tipo_comercio  = e_.id_tipo_comercio \n\nAND c_.id_establecimiento = e_.id_establecimiento\n                                \nAND c_.correo_electronico != \"\"\n                                \nAND t_.id_tipo_comercio = t.id_tipo_comercio) as \"Correo electronico\",\n\n(\nSELECT count(c_.telefono_principal)\n\nFROM tipos_comercio t_, establecimientos e_ , contactos c_\n                                \nWHERE  t_.id_tipo_comercio  = e_.id_tipo_comercio \n\nAND c_.id_establecimiento = e_.id_establecimiento\n                                \nAND c_.telefono_principal != \"\"\n                                \nAND t_.id_tipo_comercio = t.id_tipo_comercio) as \"telefono_principal\",\n    \n    (\nSELECT count(c_.telefono_secundario)\n\nFROM tipos_comercio t_, establecimientos e_ , contactos c_\n                                \nWHERE  t_.id_tipo_comercio  = e_.id_tipo_comercio \n\nAND c_.id_establecimiento = e_.id_establecimiento\n                                \nAND c_.telefono_secundario != \"\"\n                                \nAND t_.id_tipo_comercio = t.id_tipo_comercio) as \"telefono_secundario\"    \n    \n    \n\n    FROM tipos_comercio t, establecimientos e, cantones c, parroquias p, ubicaciones u\n\nWHERE  t.id_tipo_comercio  = e.id_tipo_comercio\n     \n     AND e.direccion = u.direccion AND u.id_parroquia = p.id_parroquia AND p.id_canton = c.id_canton  \n     \n     LIMIT 8;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T01:58:39+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "clasificacion": "string",
+                      "dirección web": "string",
+                      "dirección": "string",
+                      "Correo electronico": "string",
+                      "telefono_principal": "string",
+                      "telefono_secundario": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "clasificacion",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "dirección web",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Correo electronico",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "telefono_secundario",
+                  "index": 5,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "telefono_principal",
+                  "index": 4,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "dirección",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1659227021520_1977306621",
+      "id": "paragraph_1659227021520_1977306621",
+      "dateCreated": "2022-07-31T00:23:41+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9575",
+      "dateFinished": "2022-07-31T01:58:40+0000",
+      "dateStarted": "2022-07-31T01:58:39+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "clasificacion\tdirección web\tdirección\tCorreo electronico\ttelefono_principal\ttelefono_secundario\nRESTAURANTE\t618\t8845\t6771\t7929\t4522\nFUENTE  DE  SODA\t17\t2027\t1373\t1793\t846\nHOTEL\t465\t1159\t886\t1038\t524\nCASA  DE  HUÉSPEDES\t38\t201\t155\t178\t98\nCAFETERÍA\t129\t1512\t1128\t1374\t729\nSALA  DE  RECEPCIONES  Y  BANQUETES\t13\t272\t215\t246\t131\nHOSTAL\t338\t2309\t1778\t2077\t1119\nBAR\t25\t1045\t817\t953\t499\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%Mysql\n\n\n-- % ventas del pais que genera cada provincia\n\nSELECT DISTINCT ((sum(p.ventas_generadas)*100)/(SELECT SUM(v_.ventas_generadas) FROM provincias v_)) as \"porcentaje\", p.provincia\nFROM provincias p\nGROUP BY p.provincia\nORDER BY 2 desc;\n\n\n\n\n\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T02:34:41+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia": "string",
+                      "porcentaje": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "provincia",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "porcentaje",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1659230831331_1046833028",
+      "id": "paragraph_1659230831331_1046833028",
+      "dateCreated": "2022-07-31T01:27:11+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:30584",
+      "dateFinished": "2022-07-31T02:34:16+0000",
+      "dateStarted": "2022-07-31T02:34:16+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "porcentaje\tprovincia\n1.862160697571309\tZAMORA  CHINCHIPE\n10.054682496674713\tTUNGURAHUA\n1.4335681560668012\tSUCUMBÍOS\n1.862160697571309\tSANTO  DOMINGO  DE  LOS  TSÁCHILAS\n10.054682496674713\tSANTA  ELENA\n10.054682496674713\tPICHINCHA\n1.862160697571309\tPASTAZA\n1.4335681560668012\tORELLANA\n1.862160697571309\tNAPO\n1.4335681560668012\tMORONA  SANTIAGO\n0.0\tMANABÍ  \n1.4335681560668012\tLOS  RÍOS\n1.862160697571309\tLOJA\n1.4335681560668012\tIMBABURA\n1.862160697571309\tGUAYAS\n6.547120547810237\tGALÁPAGOS\n10.054682496674713\tESMERALDAS\n10.054682496674713\tEL  ORO\n1.4335681560668012\tCOTOPAXI\n1.862160697571309\tCHIMBORAZO\n10.054682496674713\tCARCHI\n0.0\tCAÑAR  \n10.054682496674713\tBOLÍVAR\n1.4335681560668012\tAZUAY\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%Mysql\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-31T01:59:35+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1659232775423_48010846",
+      "id": "paragraph_1659232775423_48010846",
+      "dateCreated": "2022-07-31T01:59:35+0000",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:34838"
+    }
+  ],
+  "name": "proyecto",
+  "id": "2HA11WF63",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/proyecto"
+}
